@@ -21,7 +21,7 @@ namespace ActionEngine.Framework
     using System;
     using System.Collections.Generic;
 
-    public sealed class EventMgr
+    public sealed class EventMgr : IDisposable
     {
         private Dictionary<Type, IEventAggregator> eventDict = new Dictionary<Type, IEventAggregator>();
 
@@ -86,5 +86,9 @@ namespace ActionEngine.Framework
             }
         }
 
+        public void Dispose()
+        {
+            eventDict.Clear();
+        }
     }
 }
